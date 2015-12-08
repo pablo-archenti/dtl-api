@@ -1,0 +1,28 @@
+dtl_api_dev:
+    extends:
+        file: common.yml
+        service: dtl-api
+    volumes:
+        - ../:/app
+    links:
+        - mysql
+    environment:
+        - NODE_ENV=development
+    command: run start-dev
+
+mysql:
+   build: mysql
+   ports:
+       - "3306:3306"
+   volumes_from:
+       - mysql-data
+   environment:
+       - USERNAME=root
+       - PASSWORD=verysecret
+       - MYSQL_ROOT_PASSWORD=verysecret
+
+mysql-data:
+ build: mysql/mysql-data
+ volumes:
+   - /var/lib/mysql
+ command: /bin/true
