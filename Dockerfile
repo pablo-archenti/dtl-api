@@ -5,6 +5,7 @@ WORKDIR /app
 ADD package.json ./
 RUN npm install
 RUN npm install -g strongloop
+RUN npm install -g supervisor
 ADD . ./
 
 CMD ["start"]
