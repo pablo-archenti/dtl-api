@@ -3,6 +3,7 @@ module.exports = function(Volunteer) {
     var app = require('../../server/server');
 
     modelValidation(Volunteer);
+    Volunteer.observe('persist', beforePersist);
     Volunteer.login = login;
     Volunteer.sendLoginCode = sendLoginCode;
     Volunteer.prototype.createOrUpdateLoginCode = createOrUpdateLoginCode;
@@ -67,6 +68,10 @@ module.exports = function(Volunteer) {
 
     function beforePersist(ctx, next) {
         var volunteer = ctx.data;
+
+        if (!volunteer) {
+            next();
+        }
 
         volunteer.projectsInCharge = volunteer.projectsInCharge === 'yes' ? 'si' : 'no';
         volunteer.collectThings = volunteer.collectThings === 'yes' ? 'si' : 'no';
