@@ -4,6 +4,7 @@ module.exports = function(Volunteer) {
 
     modelValidation(Volunteer);
     Volunteer.observe('persist', beforePersist);
+    Volunteer.observe('loaded', loaded);
     Volunteer.login = login;
     Volunteer.sendLoginCode = sendLoginCode;
     Volunteer.prototype.createOrUpdateLoginCode = createOrUpdateLoginCode;
@@ -70,12 +71,26 @@ module.exports = function(Volunteer) {
         var volunteer = ctx.data;
 
         if (!volunteer) {
-            next();
+            return next();
         }
 
         volunteer.projectsInCharge = volunteer.projectsInCharge === 'yes' ? 'si' : 'no';
         volunteer.collectThings = volunteer.collectThings === 'yes' ? 'si' : 'no';
         volunteer.keepUpdated = volunteer.keepUpdated === 'yes' ? 'si' : 'no';
+
+        next();
+    }
+
+    function loaded(ctx, next) {
+        var volunteer = ctx.instance;
+
+        if (!volunteer) {
+            return next();
+        }
+
+        volunteer.projectsInCharge = volunteer.projectsInCharge === 'si' ? 'yes' : 'no';
+        volunteer.collectThings = volunteer.collectThings === 'si' ? 'yes' : 'no';
+        volunteer.keepUpdated = volunteer.keepUpdated === 'si' ? 'yes' : 'no';
 
         next();
     }
