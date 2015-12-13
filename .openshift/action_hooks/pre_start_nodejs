@@ -1,3 +1,8 @@
 #!/bin/bash
 
-export NODE_ENV=openshift
+# Set NODE_ENV
+echo ""
+echo " - pre_start_nodejs: Setting the NODE_ENV variable"
+NODE_ENV=openshift
+export NODE_ENV
+echo "NODE_ENV: $NODE_ENV"
