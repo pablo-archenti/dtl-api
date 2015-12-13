@@ -7,7 +7,7 @@ dtl_api_dev:
     links:
         - mysql
     environment:
-        - NODE_ENV=development
+        - NODE_ENV=docker
     command: run start-dev
 
 mysql:

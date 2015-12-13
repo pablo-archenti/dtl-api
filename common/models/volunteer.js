@@ -1,5 +1,7 @@
 module.exports = function(Volunteer) {
     'use strict';
+
+    var Promise = require('bluebird');
     var app = require('../../server/server');
 
     modelValidation(Volunteer);

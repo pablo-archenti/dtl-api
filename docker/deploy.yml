@@ -5,7 +5,7 @@ dtl_api_deploy:
     links:
         - mysql
     environment:
-        - NODE_ENV=production
+        - NODE_ENV=docker
     command: run start
 
 mysql:
