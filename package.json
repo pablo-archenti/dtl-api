@@ -19,6 +19,8 @@
     "bluebird": "^3.0.6"
   },
   "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-shell": "^0.5.1",
     "jshint": "^2.5.6",
     "loopback-sdk-angular": "^1.5.0"
   },
