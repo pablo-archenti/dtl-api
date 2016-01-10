@@ -3,5 +3,5 @@ var shell = require('gulp-shell');
 
 gulp.task(
     'ng-client',
-    shell.task(['lb-ng -m dtlService server/server.js ../dtl-app/www/app/lib/dtlService.module.js'], {verbose: true})
+    shell.task(['lb-ng -m dtlClient server/server.js ../dtl-app/www/app/lib/dtl/dtl.client.js'], {verbose: true})
 );
