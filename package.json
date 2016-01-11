@@ -4,7 +4,7 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node .",
-    "start-dev": "supervisor --extensions '.' --watch '.' .",
+    "start-dev": "DEBUG=* supervisor --extensions '.' --watch '.' .",
     "pretest": "jshint ."
   },
   "dependencies": {
