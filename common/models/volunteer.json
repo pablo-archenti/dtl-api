@@ -154,6 +154,10 @@
       "type": "hasOne",
       "model": "LoginCode",
       "foreignKey": "volunteerId"
+    },
+    "projects": {
+      "type": "hasAndBelongsToMany",
+      "model": "Project"
     }
   },
   "acls": [
@@ -170,7 +174,7 @@
       "permission": "ALLOW"
     },
     {
-      "accessType": "EXECUTE",
+      "accessType": "WRITE",
       "principalType": "ROLE",
       "principalId": "$unauthenticated",
       "permission": "ALLOW",
@@ -191,18 +195,25 @@
       "property": "sendLoginCode"
     },
     {
-      "accessType": "EXECUTE",
+      "accessType": "WRITE",
       "principalType": "ROLE",
       "principalId": "$owner",
       "permission": "ALLOW",
       "property": "updateAttributes"
     },
     {
-      "accessType": "EXECUTE",
+      "accessType": "WRITE",
       "principalType": "ROLE",
       "principalId": "$owner",
       "permission": "ALLOW",
       "property": "destroyById"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "__get__projects"
     }
   ],
   "methods": []
