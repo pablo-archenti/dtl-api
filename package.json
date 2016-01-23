@@ -4,9 +4,10 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node .",
-    "start-dev": "DEBUG=* supervisor --extensions '.' --watch '.' .",
+    "start-dev": "supervisor --extensions '.' --watch '.' .",
     "pretest": "jshint .",
-    "db-update": "node ./server/bin/autoupdate.js"
+    "db-update": "node ./server/bin/autoupdate.js",
+    "prestart": "npm run db-udpate"
   },
   "dependencies": {
     "compression": "^1.0.3",
