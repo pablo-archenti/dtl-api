@@ -4,6 +4,11 @@
   "port": 3030,
   "volunteerSessionTTL": 31536000,
   "loginCodeTTL": 43200,
+  "dtlWebserver": {
+      "baseUrl": "http://desdetulugar.com.ar",
+      "projectsPicsMain": "http://desdetulugar.com.ar/panel/proyectos/principal/",
+      "projectsPicsGallery": "http://desdetulugar.com.ar/panel/proyectos/principal/"
+  },
   "remoting": {
     "context": {
       "enableHttpContext": false

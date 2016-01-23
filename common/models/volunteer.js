@@ -71,10 +71,7 @@ module.exports = function(Volunteer) {
 
     function beforePersist(ctx, next) {
         var volunteer = ctx.data;
-
-        if (!volunteer) {
-            return next();
-        }
+        if (!volunteer) return next();
 
         volunteer.projectsInCharge = volunteer.projectsInCharge === 'yes' ? 'si' : 'no';
         volunteer.collectThings = volunteer.collectThings === 'yes' ? 'si' : 'no';
