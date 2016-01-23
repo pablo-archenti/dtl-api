@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node .",
     "start-dev": "DEBUG=* supervisor --extensions '.' --watch '.' .",
-    "pretest": "jshint ."
+    "pretest": "jshint .",
+    "db-update": "node ./server/bin/autoupdate.js"
   },
   "dependencies": {
     "compression": "^1.0.3",
