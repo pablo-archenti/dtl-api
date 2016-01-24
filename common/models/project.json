@@ -20,7 +20,7 @@
       }
     },
     "openingDate": {
-      "type": "date",
+      "type": "string",
       "required": true,
       "mysql": {
         "columnName": "fecha_apertura",
@@ -30,7 +30,7 @@
       }
     },
     "closingDate": {
-      "type": "date",
+      "type": "string",
       "mysql": {
         "columnName": "fecha_cierre",
         "dataType": "VARCHAR",
