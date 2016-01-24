@@ -214,6 +214,13 @@
       "principalId": "$owner",
       "permission": "ALLOW",
       "property": "__get__projects"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "__exists__projects"
     }
   ],
   "methods": []
