@@ -1,14 +1,15 @@
-dtl_api_dev:
-    extends:
-        file: common.yml
-        service: dtl-api
+dtl-api:
+    build: ../
+    ports:
+        - "3030:3030"
+    working_dir: /app
     volumes:
         - ../:/app
     links:
         - mysql
     environment:
-        - NODE_ENV=docker
-    command: run start-dev
+        - NODE_ENV=development
+    command: npm run start-dev
 
 mysql:
    build: mysql

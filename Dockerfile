@@ -8,5 +8,4 @@ RUN npm install -g strongloop
 RUN npm install -g supervisor
 ADD . ./
 
-CMD ["start"]
-ENTRYPOINT [ "npm" ]
+CMD ["npm start"]
