@@ -206,7 +206,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "pictures": {
+      "type": "hasMany",
+      "model": "ProjectGallery",
+      "foreignKey": "projectId"
+    }
+  },
   "acls": [
     {
       "accessType": "*",

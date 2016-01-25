@@ -51,5 +51,9 @@
   "LoginCode": {
     "dataSource": "mysql",
     "public": false
+  },
+  "ProjectGallery": {
+    "dataSource": "mysql",
+    "public": false
   }
 }
