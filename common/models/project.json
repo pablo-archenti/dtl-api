@@ -207,7 +207,7 @@
   },
   "validations": [],
   "relations": {
-    "pictures": {
+    "gallery": {
       "type": "hasMany",
       "model": "ProjectGallery",
       "foreignKey": "projectId"
