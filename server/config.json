@@ -6,8 +6,8 @@
   "loginCodeTTL": 43200,
   "dtlWebserver": {
       "baseUrl": "http://desdetulugar.com.ar",
-      "projectsPicsMainPath": "http://desdetulugar.com.ar/panel/proyectos/principal/",
-      "projectsPicsGalleryPath": "http://desdetulugar.com.ar/panel/proyectos/principal/"
+      "projectsPicsMainEndpoint": "http://desdetulugar.com.ar/panel/proyectos/principal",
+      "projectsPicsGalleryEndpoint": "http://desdetulugar.com.ar/panel/proyectos/chicas"
   },
   "remoting": {
     "context": {

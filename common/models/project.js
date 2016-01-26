@@ -1,6 +1,7 @@
 module.exports = function(Project) {
     'use strict';
     var app = require('../../server/server');
+    var util = require('util');
 
     Project.observe('loaded', loaded);
 
@@ -9,7 +10,13 @@ module.exports = function(Project) {
         if (!project) return next();
 
         if (project.picture) {
-            project.picture = app.get('dtlWebserver').projectsPicsMainPath + project.picture;
+            project.picture = util.format('%s/%s', app.get('dtlWebserver').projectsPicsMainEndpoint, project.picture);
+        }
+
+        if (project.gallery()) {
+            project.gallery().forEach(function(pic, index) {
+                project.gallery()[index]['picture'] = util.format('%s/%s', app.get('dtlWebserver').projectsPicsGalleryEndpoint, pic.picture);
+            });
         }
 
         next();
