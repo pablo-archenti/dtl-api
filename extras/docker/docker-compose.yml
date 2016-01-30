@@ -1,10 +1,10 @@
 dtl-api:
-    build: ../
+    build: ../../
     ports:
         - "3030:3030"
     working_dir: /app
     volumes:
-        - ../:/app
+        - ../../:/app
     links:
         - mysql
     environment:
