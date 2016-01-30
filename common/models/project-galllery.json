@@ -16,7 +16,7 @@
         "nullable": "N"
       }
     },
-    "picture": {
+    "url": {
       "type": "string",
       "length": 300,
       "mysql": {

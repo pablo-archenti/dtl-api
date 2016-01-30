@@ -15,7 +15,7 @@ module.exports = function(Project) {
 
         if (project.gallery()) {
             project.gallery().forEach(function(pic, index) {
-                project.gallery()[index]['picture'] = util.format('%s/%s', app.get('dtlWebserver').projectsPicsGalleryEndpoint, pic.picture);
+                project.gallery()[index]['url'] = util.format('%s/%s', app.get('dtlWebserver').projectsPicsGalleryEndpoint, pic.url);
             });
         }
 
