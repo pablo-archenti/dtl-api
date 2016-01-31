@@ -3,7 +3,7 @@
     "host": "0.0.0.0",
     "port": 3030,
     "volunteerSessionTTL": 31536000,
-    "loginCodeTTL": 7776000,
+    "loginCodeTTL": 43200,
     "enableEmails": true,
     "dtlWebserver": {
         "baseUrl": "http://desdetulugar.com.ar",
