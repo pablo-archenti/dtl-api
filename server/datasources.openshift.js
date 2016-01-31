@@ -5,6 +5,6 @@ module.exports = {
         port: process.env.OPENSHIFT_MYSQL_DB_PORT,
         user: process.env.OPENSHIFT_MYSQL_DB_USERNAME,
         password: process.env.OPENSHIFT_MYSQL_DB_PASSWORD,
-        database: 'api',
+        database: 'desdetul_bd',
     }
 };
