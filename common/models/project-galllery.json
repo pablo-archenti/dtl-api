@@ -1,32 +1,32 @@
 {
-  "name": "ProjectGallery",
-  "base": "PersistedModel",
-  "idInjection": true,
-  "options": {
-    "validateUpsert": true,
-    "mysql": {
-      "table": "fotos"
-    }
-  },
-  "properties": {
-    "projectId": {
-      "type": "number",
-      "mysql": {
-        "columnName": "id_galeria",
-        "nullable": "N"
-      }
+    "name": "ProjectGallery",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true,
+        "mysql": {
+            "table": "fotos"
+        }
     },
-    "url": {
-      "type": "string",
-      "length": 300,
-      "mysql": {
-        "columnName": "foto",
-        "nullable": "N"
-      }
-    }
-  },
-  "validations": [],
-  "relations": {},
-  "acls": [],
-  "methods": []
+    "properties": {
+        "projectId": {
+            "type": "number",
+            "mysql": {
+                "columnName": "id_galeria",
+                "nullable": "N"
+            }
+        },
+        "url": {
+            "type": "string",
+            "length": 300,
+            "mysql": {
+                "columnName": "foto",
+                "nullable": "N"
+            }
+        }
+    },
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": []
 }

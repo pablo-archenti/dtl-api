@@ -46,6 +46,10 @@
         "dataSource": "mysql",
         "public": true
     },
+    "Suscription": {
+        "dataSource": "mysql",
+        "public": true
+    },
     "Admin": {
         "dataSource": "db",
         "public": true,

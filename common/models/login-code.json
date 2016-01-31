@@ -1,31 +1,31 @@
 {
-  "name": "LoginCode",
-  "base": "PersistedModel",
-  "idInjection": true,
-  "options": {
-    "validateUpsert": true
-  },
-  "properties": {
-    "code": {
-      "type": "number"
+    "name": "LoginCode",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
     },
-    "ttl": {
-      "type": "number"
+    "properties": {
+        "code": {
+            "type": "number"
+        },
+        "ttl": {
+            "type": "number"
+        },
+        "createdAt": {
+            "type": "date",
+            "dataType": "timestamp",
+            "defaultFn": "now"
+        }
     },
-    "createdAt": {
-      "type": "date",
-      "dataType": "timestamp",
-      "defaultFn": "now"
-    }
-  },
-  "validations": [],
-  "relations": {
-      "volunteer": {
-        "type": "belongsTo",
-        "model": "Volunteer",
-        "foreignKey": ""
-      }
-  },
-  "acls": [],
-  "methods": []
+    "validations": [],
+    "relations": {
+        "volunteer": {
+            "type": "belongsTo",
+            "model": "Volunteer",
+            "foreignKey": ""
+        }
+    },
+    "acls": [],
+    "methods": []
 }
