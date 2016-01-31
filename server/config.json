@@ -1,34 +1,34 @@
 {
-  "restApiRoot": "/api",
-  "host": "0.0.0.0",
-  "port": 3030,
-  "volunteerSessionTTL": 31536000,
-  "loginCodeTTL": 7776000,
-  "dtlWebserver": {
-      "baseUrl": "http://desdetulugar.com.ar",
-      "projectsPicsMainEndpoint": "http://desdetulugar.com.ar/panel/proyectos/principal",
-      "projectsPicsGalleryEndpoint": "http://desdetulugar.com.ar/panel/proyectos/chicas"
-  },
-  "remoting": {
-    "context": {
-      "enableHttpContext": false
+    "restApiRoot": "/api",
+    "host": "0.0.0.0",
+    "port": 3030,
+    "volunteerSessionTTL": 31536000,
+    "loginCodeTTL": 7776000,
+    "dtlWebserver": {
+        "baseUrl": "http://desdetulugar.com.ar",
+        "projectsPicsMainEndpoint": "http://desdetulugar.com.ar/panel/proyectos/principal",
+        "projectsPicsGalleryEndpoint": "http://desdetulugar.com.ar/panel/proyectos/chicas"
     },
-    "rest": {
-      "normalizeHttpPath": false,
-      "xml": false
+    "remoting": {
+        "context": {
+            "enableHttpContext": false
+        },
+        "rest": {
+            "normalizeHttpPath": false,
+            "xml": false
+        },
+        "json": {
+            "strict": false,
+            "limit": "100kb"
+        },
+        "urlencoded": {
+            "extended": true,
+            "limit": "100kb"
+        },
+        "cors": false,
+        "errorHandler": {
+            "disableStackTrace": false
+        }
     },
-    "json": {
-      "strict": false,
-      "limit": "100kb"
-    },
-    "urlencoded": {
-      "extended": true,
-      "limit": "100kb"
-    },
-    "cors": false,
-    "errorHandler": {
-      "disableStackTrace": false
-    }
-  },
-  "legacyExplorer": false
+    "legacyExplorer": false
 }

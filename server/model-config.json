@@ -1,59 +1,62 @@
 {
-  "_meta": {
-    "sources": [
-      "loopback/common/models",
-      "loopback/server/models",
-      "../common/models",
-      "./models"
-    ],
-    "mixins": [
-      "loopback/common/mixins",
-      "loopback/server/mixins",
-      "../common/mixins",
-      "./mixins"
-    ]
-  },
-  "User": {
-    "dataSource": "db",
-    "public": false
-  },
-  "AccessToken": {
-    "dataSource": "mysql",
-    "public": false
-  },
-  "ACL": {
-    "dataSource": "db",
-    "public": false
-  },
-  "RoleMapping": {
-    "dataSource": "db",
-    "public": false
-  },
-  "Role": {
-    "dataSource": "db",
-    "public": false
-  },
-  "Volunteer": {
-    "dataSource": "mysql",
-    "public": true,
-    "emailVerificationRequired": false,
-    "realmRequired": false
-  },
-  "Project": {
-    "dataSource": "mysql",
-    "public": true
-  },
-  "Admin": {
-    "dataSource": "db",
-    "public": true,
-    "emailVerificationRequired": false
-  },
-  "LoginCode": {
-    "dataSource": "mysql",
-    "public": false
-  },
-  "ProjectGallery": {
-    "dataSource": "mysql",
-    "public": false
-  }
+    "_meta": {
+        "sources": [
+            "loopback/common/models",
+            "loopback/server/models",
+            "../common/models",
+            "./models"
+        ],
+        "mixins": [
+            "loopback/common/mixins",
+            "loopback/server/mixins",
+            "../common/mixins",
+            "./mixins"
+        ]
+    },
+    "Email": {
+      "dataSource": "defaultSmtp"
+    },
+    "User": {
+        "dataSource": "db",
+        "public": false
+    },
+    "AccessToken": {
+        "dataSource": "mysql",
+        "public": false
+    },
+    "ACL": {
+        "dataSource": "db",
+        "public": false
+    },
+    "RoleMapping": {
+        "dataSource": "db",
+        "public": false
+    },
+    "Role": {
+        "dataSource": "db",
+        "public": false
+    },
+    "Volunteer": {
+        "dataSource": "mysql",
+        "public": true,
+        "emailVerificationRequired": false,
+        "realmRequired": false
+    },
+    "Project": {
+        "dataSource": "mysql",
+        "public": true
+    },
+    "Admin": {
+        "dataSource": "db",
+        "public": true,
+        "emailVerificationRequired": false
+    },
+    "LoginCode": {
+        "dataSource": "mysql",
+        "public": false
+    },
+    "ProjectGallery": {
+        "dataSource": "mysql",
+        "public": false
+    }
 }

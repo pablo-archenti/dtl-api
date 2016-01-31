@@ -50,18 +50,6 @@ module.exports = function(Volunteer) {
         });
     });
 
-    function createOrUpdateLoginCode() {
-        var self = this;
-        var loginCode = this.loginCode() || null;
-        var p;
-        return new Promise(function(resolve, reject) {
-            if (loginCode) p = loginCode.save();
-            else p = self.loginCode.create();
-            p.then(resolve)
-            .catch(reject);
-        });
-    }
-
     function modelValidation(Volunteer) {
         //Volunteer.validatesFormatOf('birthdate', { with: /(^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$)|(^$)/ , message: 'Invalid format ("DD/MM/AAAA")'});
         Volunteer.validatesFormatOf('projectsInCharge', { with: /^(yes|no)$/ , message: 'Invalid format ("yes" or "no")'});
@@ -94,6 +82,18 @@ module.exports = function(Volunteer) {
         next();
     }
 
+    function createOrUpdateLoginCode() {
+        var self = this;
+        var loginCode = this.loginCode() || null;
+        var p;
+        return new Promise(function(resolve, reject) {
+            if (loginCode) p = loginCode.save();
+            else p = self.loginCode.create();
+            p.then(resolve)
+            .catch(reject);
+        });
+    }
+
     function sendLoginCode(email) {
         var self = this;
 
@@ -110,11 +110,10 @@ module.exports = function(Volunteer) {
                 if (!volunteer) return reject(noEmail);
                 volunteer.createOrUpdateLoginCode()
                 .then(function(loginCode) {
-
-                    //TODO: send loginCode
-                    resolve({
-                        code: loginCode.code
-                    });
+                    return sendEmailWithLoginCode(email, loginCode.code);
+                })
+                .then(function() {
+                    resolve();
                 })
                 .catch(reject);
             })
@@ -157,6 +156,21 @@ module.exports = function(Volunteer) {
             })
             .catch(function(err) {
                 reject(err);
+            });
+        });
+    }
+
+    function sendEmailWithLoginCode(email, code) {
+
+        return new Promise(function(resolve, reject) {
+            app.models.Email.send({
+                to: email,
+                from: 'Desde Tu Lugar <desdetulugar@gmail.com>',
+                subject: 'Código para iniciar sesión',
+                text: 'Para iniciar sesión ingresá el siguiente código: ' + code
+            }, function(err) {
+                if (err) return reject(err);
+                resolve();
             });
         });
     }
