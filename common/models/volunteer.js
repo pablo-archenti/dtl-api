@@ -4,6 +4,8 @@ module.exports = function(Volunteer) {
     var Promise = require('bluebird');
     var app = require('../../server/server');
 
+    Promise.config({warnings: false});
+
     modelValidation(Volunteer);
     Volunteer.observe('persist', beforePersist);
     Volunteer.observe('loaded', loaded);
