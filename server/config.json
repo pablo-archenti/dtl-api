@@ -4,7 +4,7 @@
     "port": 3030,
     "volunteerSessionTTL": 31536000,
     "loginCodeTTL": 7776000,
-    "enableEmails": false,
+    "enableEmails": true,
     "dtlWebserver": {
         "baseUrl": "http://desdetulugar.com.ar",
         "projectsPicsMainEndpoint": "http://desdetulugar.com.ar/panel/proyectos/principal",
