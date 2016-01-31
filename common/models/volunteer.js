@@ -110,7 +110,8 @@ module.exports = function(Volunteer) {
                 if (!volunteer) return reject(noEmail);
                 volunteer.createOrUpdateLoginCode()
                 .then(function(loginCode) {
-                    return sendEmailWithLoginCode(email, loginCode.code);
+                    if (app.get('enableEmails'))
+                        return sendEmailWithLoginCode(email, loginCode.code);
                 })
                 .then(function() {
                     resolve();
