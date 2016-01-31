@@ -25,11 +25,6 @@ SET time_zone = "+00:00";
 use desdetul_bd;
 
 --
--- Dumping data for table `VolunteerProject`
---
-INSERT INTO `VolunteerProject` VALUES (1,600,75),(2,600,76);
-
---
 -- Dumping data for table `personas`
 --
 /*!40000 ALTER TABLE `personas` DISABLE KEYS */;
@@ -51,3 +46,8 @@ INSERT INTO `proyectos` VALUES (28,'Proyecto Fuerte Apache y Cava','21/10/2013',
 /*!40000 ALTER TABLE `fotos` DISABLE KEYS */;
 INSERT INTO `fotos` VALUES (1,28,'17_58_11fuerteapacheycava1.jpeg','0000-00-00',0,0),(2,28,'17_58_17fuerteapacheycava2.jpeg','0000-00-00',0,0),(3,28,'17_58_21fuerteapacheycava3.jpeg','0000-00-00',0,0),(4,28,'17_58_24fuerteapacheycava4.jpeg','0000-00-00',0,0),(5,28,'17_58_29fuerteapacheycava5.jpeg','0000-00-00',0,0),(6,29,'12_06_46umbrales1.jpeg','0000-00-00',0,0),(7,29,'12_06_49umbrales2.jpeg','0000-00-00',0,0),(8,29,'12_06_52umbrales3.jpeg','0000-00-00',0,0),(9,75,'09_41_25Cordoba 1.jpeg','0000-00-00',0,0),(10,75,'09_41_31Cordoba 2.jpeg','0000-00-00',0,0),(11,75,'09_41_40Cordoba 3.jpeg','0000-00-00',0,0),(12,75,'09_41_48Cordoba 4.jpeg','0000-00-00',0,0),(13,75,'09_41_54Cordoba 5.jpeg','0000-00-00',0,0),(14,75,'09_42_04Cordoba 6.jpeg','0000-00-00',0,0),(15,75,'09_42_12Cordoba 7.jpeg','0000-00-00',0,0),(16,76,'13_55_09SAM_5550.jpeg','0000-00-00',0,0);
 /*!40000 ALTER TABLE `fotos` ENABLE KEYS */;
+
+--
+-- Dumping data for table `Suscription`
+--
+INSERT INTO `Suscription` (`volunteerId`,`projectId`) VALUES (600,75),(600,76);
