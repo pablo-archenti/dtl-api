@@ -159,7 +159,7 @@
             "type": "hasMany",
             "model": "Project",
             "foreignKey": "volunteerId",
-            "through": "Suscription"
+            "through": "Subscription"
         }
     },
     "acls": [

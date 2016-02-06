@@ -46,7 +46,7 @@
         "dataSource": "mysql",
         "public": true
     },
-    "Suscription": {
+    "Subscription": {
         "dataSource": "mysql",
         "public": true
     },
