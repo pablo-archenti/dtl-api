@@ -9,6 +9,7 @@ module.exports = function(Volunteer) {
     modelValidation(Volunteer);
     Volunteer.observe('persist', beforePersist);
     Volunteer.observe('loaded', loaded);
+    Volunteer.observe('after delete', afterDelete);
     Volunteer.login = login;
     Volunteer.sendLoginCode = sendLoginCode;
     Volunteer.prototype.createOrUpdateLoginCode = createOrUpdateLoginCode;
@@ -82,6 +83,21 @@ module.exports = function(Volunteer) {
         volunteer.keepUpdated = volunteer.keepUpdated === 'si' ? 'yes' : 'no';
 
         next();
+    }
+
+    function afterDelete(ctx, next) {
+        var id = ctx.where && ctx.where.id || {};
+
+        if (!id) {
+            return next();
+        }
+
+        app.models.Subscription.destroyAll({
+            volunteerId: id
+        })
+        .finally(function() {
+            next();
+        });
     }
 
     function createOrUpdateLoginCode() {
