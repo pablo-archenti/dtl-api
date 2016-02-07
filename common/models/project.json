@@ -193,16 +193,6 @@
                 "dataType": "DATE",
                 "nullable": "N"
             }
-        },
-        "updatedAt": {
-            "type": "date",
-            "defaultFn": "now",
-            "dataType": "timestamp",
-            "mysql": {
-                "columnName": "actualizado",
-                "dataType": "timestamp",
-                "nullable": "N"
-            }
         }
     },
     "validations": [],

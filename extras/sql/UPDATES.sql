@@ -1,2 +1,0 @@
-ALTER TABLE `personas` ADD COLUMN `actualizado` timestamp NULL ON UPDATE CURRENT_TIMESTAMP;
-ALTER TABLE `proyectos` ADD COLUMN `actualizado` timestamp NULL ON UPDATE CURRENT_TIMESTAMP;

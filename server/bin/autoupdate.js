@@ -1,10 +1,19 @@
 var path = require('path');
 var app = require(path.resolve(__dirname, '../server'));
 
-var dataSource = app.dataSources.mysql;
+var datasource = app.dataSources.mysql;
 var models = ['AccessToken', 'LoginCode', 'Subscription'];
 
-dataSource.autoupdate(models, function(err) {
+datasource.autoupdate(models, function(err) {
     if (err) throw err;
-    dataSource.disconnect();
+
+    updateSchema();
 });
+
+function updateSchema() {
+    var sql = 'ALTER TABLE `personas` ADD COLUMN `actualizado` timestamp NULL ON UPDATE CURRENT_TIMESTAMP;';
+
+    datasource.connector.execute(sql, [], function(err) {
+        datasource.disconnect();
+    });
+}
