@@ -10,7 +10,7 @@ module.exports = function(LoginCode) {
             ctx.instance.setAttribute('code', randomNumbers.get(1000, 9999));
         }
         ctx.instance.setAttribute('ttl', app.get('loginCodeTTL'));
-        ctx.instance.setAttribute('createdAt', new Date());
+        ctx.instance.setAttribute('createdAt', Date.now());
 
         deleteExpired();
 
@@ -22,7 +22,7 @@ module.exports = function(LoginCode) {
         var expiredDate = new Date(this.createdAt);
         expiredDate = expiredDate.setSeconds(expiredDate.getSeconds() + this.ttl);
 
-        if ((self.code) && (self.code === code) && (expiredDate > new Date())) {
+        if ((self.code) && (self.code === code) && (expiredDate > Date.now())) {
             return true;
         } else {
             return false;
@@ -30,8 +30,9 @@ module.exports = function(LoginCode) {
     };
 
     function deleteExpired() {
+        var expired = (Date.now() - (app.get('loginCodeTTL') * 1000 * 2)) / 1000;
         LoginCode.destroyAll({
-            createdAt: { lt: Date.now() - (app.get('loginCodeTTL') * 2) }
+            createdAt: { lt: expired }
         });
     }
 
