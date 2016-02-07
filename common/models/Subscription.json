@@ -13,6 +13,10 @@
         }
     },
     "validations": [],
+    "indexes": {
+        "volunteer_index": { "columns": "projectId" },
+        "project_index": { "columns": "volunteerId" }
+    },
     "relations": {
         "project": {
             "type": "belongsTo",

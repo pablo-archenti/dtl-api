@@ -19,6 +19,9 @@
         }
     },
     "validations": [],
+    "indexes": {
+        "project_index": { "columns": "volunteerId" }
+    },
     "relations": {
         "volunteer": {
             "type": "belongsTo",
