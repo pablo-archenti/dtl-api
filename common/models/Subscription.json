@@ -6,8 +6,10 @@
             "type": "String",
             "length": 250
         },
-        "date": {
-            "type": "Date"
+        "createdAt": {
+            "type": "Date",
+            "defaultFn": "now",
+            "dataType": "timestamp"
         }
     },
     "validations": [],
