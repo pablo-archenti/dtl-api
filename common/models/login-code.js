@@ -11,6 +11,9 @@ module.exports = function(LoginCode) {
         }
         ctx.instance.setAttribute('ttl', app.get('loginCodeTTL'));
         ctx.instance.setAttribute('createdAt', new Date());
+
+        deleteExpired();
+
         next();
     });
 
@@ -25,5 +28,11 @@ module.exports = function(LoginCode) {
             return false;
         }
     };
+
+    function deleteExpired() {
+        LoginCode.destroyAll({
+            createdAt: { lt: Date.now() - (app.get('loginCodeTTL') * 2) }
+        });
+    }
 
 };

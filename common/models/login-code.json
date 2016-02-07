@@ -20,7 +20,8 @@
     },
     "validations": [],
     "indexes": {
-        "project_index": { "columns": "volunteerId" }
+        "project_index": { "columns": "volunteerId" },
+        "createdat_index": { "columns": "createdAt" }
     },
     "relations": {
         "volunteer": {
