@@ -10,12 +10,12 @@
         "transports": [
             {
                 "type": "SMTP",
-                "host": "smtp.live.com",
-                "secure": false,
-                "port": 25,
+                "host": "smtp.gmail.com",
+                "secure": true,
+                "port": 465,
                 "auth": {
-                    "user": "pabarch@hotmail.com",
-                    "pass": "feqKHD5Td0ro"
+                    "user": "parchenti@gmail.com",
+                    "pass": "F04WFYbXSEQZ"
                 }
             }
         ]
