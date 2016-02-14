@@ -48,7 +48,7 @@
     },
     "Subscription": {
         "dataSource": "mysql",
-        "public": true
+        "public": false
     },
     "Admin": {
         "dataSource": "db",

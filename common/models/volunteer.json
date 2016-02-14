@@ -239,5 +239,22 @@
             "property": "__unlink__projects"
         }
     ],
-    "methods": []
+    "methods": [],
+    "mixins":{
+        "DisableAllMethods":{
+            "expose":[
+                "login",
+                "sendLoginCode",
+                "logout",
+                "deleteById",
+                "create",
+                "updateAttributes",
+                "findById",
+                "__get__projects",
+                "__link__projects",
+                "__unlink__projects",
+                "__exists__projects"
+            ]
+        }
+    }
 }

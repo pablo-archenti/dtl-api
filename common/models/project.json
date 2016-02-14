@@ -231,5 +231,13 @@
             "property": "findById"
         }
     ],
-    "methods": []
+    "methods": [],
+    "mixins":{
+        "DisableAllMethods":{
+            "expose":[
+                "find",
+                "findById"
+            ]
+        }
+    }
 }

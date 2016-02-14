@@ -27,5 +27,13 @@
             "permission": "ALLOW"
         }
     ],
-    "methods": []
+    "methods": [],
+    "mixins":{
+        "DisableAllMethods":{
+            "expose":[
+                "login",
+                "logout"
+            ]
+        }
+    }
 }
