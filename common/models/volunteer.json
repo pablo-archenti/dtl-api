@@ -187,7 +187,7 @@
             "principalType": "ROLE",
             "principalId": "$everyone",
             "permission": "ALLOW",
-            "property": "loginWithCode"
+            "property": "login"
         },
         {
             "accessType": "EXECUTE",
@@ -243,7 +243,7 @@
     "mixins":{
         "DisableAllMethods":{
             "expose":[
-                "loginWithCode",
+                "login",
                 "sendLoginCode",
                 "logout",
                 "deleteById",

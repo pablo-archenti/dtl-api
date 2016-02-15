@@ -10,12 +10,12 @@ module.exports = function(Volunteer) {
     Volunteer.observe('persist', beforePersist);
     Volunteer.observe('loaded', loaded);
     Volunteer.observe('after delete', afterDelete);
-    Volunteer.loginWithCode = loginWithCode;
+    Volunteer.login = login;
     Volunteer.sendLoginCode = sendLoginCode;
     Volunteer.prototype.createOrUpdateLoginCode = createOrUpdateLoginCode;
 
     Volunteer.remoteMethod(
-        'loginWithCode',
+        'login',
         {
             description: 'Login a volunteer with email and login code',
             accepts: [
@@ -140,7 +140,7 @@ module.exports = function(Volunteer) {
         });
     }
 
-    function loginWithCode(credentials) {
+    function login(credentials) {
         var self = this;
         return new Promise(function(resolve, reject) {
             if (!credentials.email || !credentials.code) {
