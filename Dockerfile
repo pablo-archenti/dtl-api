@@ -1,7 +1,7 @@
-FROM node:4.2.2
+FROM node:4.3.2
 
 RUN mkdir /app
 
-RUN npm install -g supervisor
+RUN npm install supervisor -g
 
 CMD ["npm start"]
