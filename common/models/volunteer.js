@@ -7,6 +7,7 @@ module.exports = function(Volunteer) {
     Promise.config({warnings: false});
 
     modelValidation(Volunteer);
+    Volunteer.observe('before save', beforeSave);
     Volunteer.observe('persist', beforePersist);
     Volunteer.observe('loaded', loaded);
     Volunteer.observe('after delete', afterDelete);
@@ -58,6 +59,16 @@ module.exports = function(Volunteer) {
         Volunteer.validatesFormatOf('projectsInCharge', { with: /^(yes|no)$/ , message: 'Invalid format ("yes" or "no")'});
         Volunteer.validatesFormatOf('collectThings', { with: /^(yes|no)$/ , message: 'Invalid format ("yes" or "no")'});
         Volunteer.validatesFormatOf('keepUpdated', { with: /^(yes|no)$/ , message: 'Invalid format ("yes" or "no")'});
+    }
+
+    function beforeSave(ctx, next) {
+        if (ctx.instance) {
+            ctx.instance.updatedAt = new Date();
+        } else {
+            ctx.data.updatedAt = new Date();
+        }
+
+        next();
     }
 
     function beforePersist(ctx, next) {

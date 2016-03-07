@@ -62,5 +62,9 @@
     "ProjectGallery": {
         "dataSource": "mysql",
         "public": false
+    },
+    "DeviceToken": {
+        "dataSource": "mysql",
+        "public": true
     }
 }

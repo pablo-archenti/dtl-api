@@ -160,6 +160,11 @@
             "model": "Project",
             "foreignKey": "volunteerId",
             "through": "Subscription"
+        },
+        "deviceTokens": {
+          "type": "hasMany",
+          "model": "DeviceToken",
+          "foreignKey": "volunteerId"
         }
     },
     "acls": [

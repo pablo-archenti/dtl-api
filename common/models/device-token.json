@@ -1,0 +1,29 @@
+{
+    "name": "DeviceToken",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "properties": {
+        "token": {
+            "type": "string",
+            "length": 512,
+            "index": {"unique": true}
+        },
+        "createdAt": {
+            "type": "date",
+            "defaultFn": "now",
+            "dataType": "timestamp"
+        },
+        "updatedAt": {
+            "type": "date",
+            "defaultFn": "now",
+            "dataType": "timestamp"
+        }
+    },
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": []
+}

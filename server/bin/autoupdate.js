@@ -2,7 +2,7 @@ var path = require('path');
 var app = require(path.resolve(__dirname, '../server'));
 
 var datasource = app.dataSources.mysql;
-var models = ['AccessToken', 'LoginCode', 'Subscription'];
+var models = ['AccessToken', 'LoginCode', 'Subscription', 'DeviceToken'];
 
 datasource.autoupdate(models, function(err) {
     if (err) throw err;
