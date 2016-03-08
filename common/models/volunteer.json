@@ -225,6 +225,13 @@
         {
             "accessType": "READ",
             "principalType": "ROLE",
+            "principalId": "admin",
+            "permission": "ALLOW",
+            "property": "__get__deviceTokens"
+        },
+        {
+            "accessType": "READ",
+            "principalType": "ROLE",
             "principalId": "$owner",
             "permission": "ALLOW",
             "property": "__exists__projects"
@@ -256,6 +263,7 @@
                 "updateAttributes",
                 "findById",
                 "__get__projects",
+                "__get__deviceTokens",
                 "__link__projects",
                 "__unlink__projects",
                 "__exists__projects"
