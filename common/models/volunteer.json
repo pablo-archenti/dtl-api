@@ -242,20 +242,6 @@
             "principalId": "$owner",
             "permission": "ALLOW",
             "property": "__unlink__projects"
-        },
-        {
-            "accessType": "WRITE",
-            "principalType": "ROLE",
-            "principalId": "$owner",
-            "permission": "ALLOW",
-            "property": "__create__deviceTokens"
-        },
-        {
-            "accessType": "WRITE",
-            "principalType": "ROLE",
-            "principalId": "$owner",
-            "permission": "ALLOW",
-            "property": "__updateById__deviceTokens"
         }
     ],
     "methods": [],
@@ -272,10 +258,7 @@
                 "__get__projects",
                 "__link__projects",
                 "__unlink__projects",
-                "__exists__projects",
-                "__get__deviceTokens",
-                "__create__deviceTokens",
-                "__updateById__deviceTokens"
+                "__exists__projects"
             ]
         }
     }

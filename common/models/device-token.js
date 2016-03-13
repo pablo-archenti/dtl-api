@@ -3,11 +3,12 @@ module.exports = function(DeviceToken) {
     var app = require('../../server/server');
 
     DeviceToken.observe('before save', function defaultCode(ctx, next) {
+        var date = new Date();
+
         if (ctx.instance) {
-            ctx.instance.updatedAt = new Date();
+            ctx.instance.updatedAt = date;
         } else {
-            ctx.data.updatedAt = new Date();
-            ctx.data.createdAt = new Date();
+            ctx.data.updatedAt = date;
         }
 
         next();
