@@ -273,6 +273,7 @@
                 "__link__projects",
                 "__unlink__projects",
                 "__exists__projects",
+                "__get__deviceTokens",
                 "__create__deviceTokens",
                 "__updateById__deviceTokens"
             ]
