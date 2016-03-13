@@ -46,5 +46,12 @@
             "property": "upsert"
         }
     ],
-    "methods": []
+    "methods": [],
+    "mixins":{
+        "DisableAllMethods":{
+            "expose":[
+                "upsert"
+            ]
+        }
+    }
 }
