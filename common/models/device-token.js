@@ -7,6 +7,7 @@ module.exports = function(DeviceToken) {
             ctx.instance.updatedAt = new Date();
         } else {
             ctx.data.updatedAt = new Date();
+            ctx.data.createdAt = new Date();
         }
 
         next();
