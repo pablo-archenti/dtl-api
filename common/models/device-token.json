@@ -12,6 +12,11 @@
             "index": {"unique": true},
             "id": "true"
         },
+        "type": {
+            "type": "string",
+            "length": 10,
+            "default": "android"
+        },
         "updatedAt": {
             "type": "date",
             "dataType": "timestamp"

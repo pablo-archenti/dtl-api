@@ -9,6 +9,9 @@ module.exports = function(DeviceToken) {
             ctx.instance.updatedAt = date;
         } else {
             ctx.data.updatedAt = date;
+            if (!ctx.data.type) {
+                ctx.data.type = 'android';
+            }
         }
 
         next();
