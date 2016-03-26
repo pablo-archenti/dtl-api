@@ -66,5 +66,9 @@
     "DeviceToken": {
         "dataSource": "mysql",
         "public": true
+    },
+    "Notification": {
+        "dataSource": "mysql",
+        "public": true
     }
 }

@@ -1,0 +1,39 @@
+{
+    "name": "Notification",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "properties": {
+        "to": {
+            "type": "object"
+        },
+        "title": {
+            "type": "string",
+            "length": 50
+        },
+        "text": {
+            "type": "string",
+            "length": 300
+        },
+        "deepLink": {
+            "type": "object"
+        },
+        "totalSent": {
+            "type": "Number"
+        },
+        "status": {
+            "type": "string",
+            "length": 20
+        },
+        "createdAt": {
+            "type": "date",
+            "defaultFn": "now"
+        }
+    },
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": []
+}
