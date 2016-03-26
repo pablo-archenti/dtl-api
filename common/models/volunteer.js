@@ -19,9 +19,16 @@ module.exports = function(Volunteer) {
         'login',
         {
             description: 'Login a volunteer with email and login code',
-            accepts: [
-                { arg: 'credentials', type: 'object', required: true, http: { source: 'body' } }
-            ],
+            accepts: [{
+                arg: 'credentials',
+                type: 'object',
+                required: true,
+                http: { source: 'body' },
+                'default': {
+                    email: 'volunteer email',
+                    code: 'sent login code number'
+                }
+            }],
             returns: {
                 arg: 'accessToken', type: 'object', root: true
             },
