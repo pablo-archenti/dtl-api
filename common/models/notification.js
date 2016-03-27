@@ -46,29 +46,24 @@ module.exports = function(Notification) {
         if (typeof notification.message.title !== 'string') return false;
         if (typeof notification.message.text !== 'string') return false;
         if (notification.message.deepLink && (typeof notification.message.deepLink !== 'object' ||
-            typeof notification.message.deepLink.state !== 'string')
-        ) return false;
+            typeof notification.message.deepLink.state !== 'string')) return false;
         if (notification.message.deepLink.params && typeof notification.message.deepLink.params !== 'object') return false;
         return true;
     }
 
     function findTokens(to, type, limit, skip) {
+        var p;
         if (to.all) {
-            return app.models.DeviceToken.find({
+            p = app.models.DeviceToken.find({
                     fields: { token: true },
                     limit: limit,
                     skip: skip,
                     where: {
                         type: type
                     }
-                })
-                .then(function(tokens) {
-                    return tokens.map(function(value) {
-                        return value.token;
-                    });
                 });
         } else {
-            return new Promise(function(resolve, reject) {
+            p = new Promise(function(resolve, reject) {
                 var params = [];
                 params.push(to.subscribers);
                 params.push(type);
@@ -80,13 +75,15 @@ module.exports = function(Notification) {
 
                 datasource.connector.execute(sql, params, function(err, tokens) {
                     if (err) return reject(err);
-                    tokens = tokens.map(function(value) {
-                        return value.token;
-                    });
                     resolve(tokens);
                 });
             });
         }
+        return p.then(function(tokens) {
+            return tokens.map(function(value) {
+                return value.token;
+            });
+        });
     }
 
     function deviceTokensStream(to, type) {
