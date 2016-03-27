@@ -23,7 +23,7 @@ module.exports = function(Notification) {
                 'default': {
                     to: {
                         all: false,
-                        subscribers: 100
+                        subscribersOf: 100
                     },
                     message: {
                         title: 'title text',
@@ -42,7 +42,7 @@ module.exports = function(Notification) {
     function sendValidation(notification) {
         if (typeof notification.to !== 'object' || typeof notification.message !== 'object') return false;
         if (typeof notification.to.all !== 'boolean') return false;
-        if (notification.to.subscribers && typeof notification.to.subscribers !== 'number') return false;
+        if (notification.to.subscribersOf && typeof notification.to.subscribersOf !== 'number') return false;
         if (typeof notification.message.title !== 'string') return false;
         if (typeof notification.message.text !== 'string') return false;
         if (notification.message.deepLink && (typeof notification.message.deepLink !== 'object' ||
@@ -65,7 +65,7 @@ module.exports = function(Notification) {
         } else {
             p = new Promise(function(resolve, reject) {
                 var params = [];
-                params.push(to.subscribers);
+                params.push(to.subscribersOf);
                 params.push(type);
                 params.push(skip);
                 params.push(limit);
