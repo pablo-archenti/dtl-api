@@ -23,13 +23,7 @@
         }
     },
     "validations": [],
-    "relations": {
-        "volunteer": {
-            "type": "hasOne",
-            "model": "Volunteer",
-            "foreignKey": "volunteerId"
-        }
-    },
+    "relations": {},
     "acls": [
         {
             "accessType": "*",
