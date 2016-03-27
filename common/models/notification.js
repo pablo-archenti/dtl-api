@@ -1,13 +1,15 @@
 module.exports = function(Notification) {
     'use strict';
 
-    var Promise = require('bluebird');
-    var app = require('../../server/server');
+    var Promise     = require('bluebird');
+    var _           = require('highland');
+    var app         = require('../../server/server');
+    var gcmClient   = require('../../lib/gcmClient')(app.get('notifications').gcm);
+    var util        = require('util');
 
     Promise.config({warnings: false});
 
     Notification.send = send;
-
     Notification.remoteMethod(
         'send',
         {
@@ -32,11 +34,11 @@ module.exports = function(Notification) {
                     }
                 }
             }],
-            http: { verb: 'post' }
+            http: { verb: 'post' },
         }
     );
 
-    function validateNotificationToSend(notification) {
+    function sendValidation(notification) {
         if (typeof notification.to !== 'object' || typeof notification.message !== 'object') return false;
         if (typeof notification.to.all !== 'boolean') return false;
         if (notification.to.subscribers && typeof notification.to.subscribers !== 'number') return false;
@@ -49,16 +51,91 @@ module.exports = function(Notification) {
         return true;
     }
 
-    function send(notification) {
-        var self = this;
+    function deviceTokensStream(to, type) {
+        var limit = 500;
+        var skip = 0;
+        return _(function(push, next) {
+            app.models.DeviceToken.find({
+                fields: { token: true },
+                limit: limit,
+                skip: skip,
+                where: {
+                    type: type
+                }
+            })
+            .then(function(tokens) {
+                tokens = tokens.map(function(value) {
+                    return value.token;
+                });
+                if (tokens.length === 0) {
+                    push(null, _.nil);
+                }
+                else  {
+                    skip += limit;
+                    push(null, tokens);
+                    next();
+                }
+            })
+            .catch(function(err) {
+                push(err);
+            });
+        });
+    }
+
+    function send(body) {
+        var self = this,
+            success = 0,
+            failure = 0,
+            total = 0;
+
         return new Promise(function(resolve, reject) {
-            if (!validateNotificationToSend(notification)) {
+            if (!sendValidation(body)) {
                 var err = new Error('invalid notification format');
                 err.statusCode = 400;
                 return reject(err);
             }
 
-            resolve();
+            Notification.create({
+                to: body.to,
+                title: body.message.title,
+                text: body.message.text,
+                deepLink: body.message.deepLink || null,
+                status: 'sending',
+                total: 100
+            })
+            .then(function(notification) {
+                notification.status = 'success';
+                deviceTokensStream(notification.to, 'android')
+                .through(gcmClient.sendNotificationStream(body.message))
+                .errors(function(err, push) {
+                    console.log('Error: ', err);
+                    notification.status = 'failure';
+                    notification.error = err.message;
+                    notification.save();
+                    push(err);
+                })
+                .each(function(result) {
+                    console.log('Each result: ', result);
+                    if (result instanceof Error) {
+                        notification.status = 'failure';
+                        notification.error = util.format('status code: %s, message: %s', result.code, result.message);
+                    }
+                    success += result.success;
+                    failure += result.failure;
+                    total += result.total;
+                })
+                .done(function() {
+                    console.log('Finish!!!');
+                    notification.success = success;
+                    notification.failure = failure;
+                    notification.total = total;
+                    notification.save();
+                });
+                resolve();
+            })
+            .catch(function(err) {
+                reject(err);
+            });
         });
     }
 };

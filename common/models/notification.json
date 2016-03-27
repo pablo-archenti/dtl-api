@@ -20,15 +20,26 @@
         "deepLink": {
             "type": "object"
         },
-        "totalSent": {
+        "total": {
+            "type": "Number"
+        },
+        "success": {
+            "type": "Number"
+        },
+        "failure": {
             "type": "Number"
         },
         "status": {
             "type": "string",
             "length": 20
         },
+        "error": {
+            "type": "string",
+            "length": 1000
+        },
         "createdAt": {
             "type": "date",
+            "dataType": "timestamp",
             "defaultFn": "now"
         }
     },

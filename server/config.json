@@ -10,6 +10,13 @@
         "projectsPicsMainEndpoint": "http://desdetulugar.com.ar/panel/proyectos/principal",
         "projectsPicsGalleryEndpoint": "http://desdetulugar.com.ar/panel/proyectos/chicas"
     },
+    "notifications": {
+        "gcm": {
+            "baseUrl": "https://gcm-http.googleapis.com/gcm/send",
+            "key": "AIzaSyAOUK4KLBv-zfV4Z8DZ5mJyo93k3fhVOcU",
+            "maxDevicesPerRequest": 1000
+        }
+    },
     "remoting": {
         "context": {
             "enableHttpContext": false
