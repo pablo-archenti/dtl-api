@@ -35,7 +35,7 @@
         },
         "error": {
             "type": "string",
-            "length": 1000
+            "dataType": "text"
         },
         "createdAt": {
             "type": "date",

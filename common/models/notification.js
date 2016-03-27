@@ -82,11 +82,39 @@ module.exports = function(Notification) {
         });
     }
 
+    function sendNotificationStreamhandler(stream, notification) {
+        var success = notification.success || 0,
+            failure = notification.failure || 0,
+            total = notification.total || 0;
+
+        stream
+        .errors(function(err, push) {
+            console.error(err);
+            notification.status = 'failure';
+            notification.error += util.format('message: %s || ', err.message);
+            notification.save();
+            push(err);
+        })
+        .each(function(result) {
+            console.log(result);
+            if (result instanceof Error) {
+                notification.status = 'failure';
+                notification.error += util.format('status code: %s, message: %s || ', result.code, result.message);
+            }
+            success += result.success;
+            failure += result.failure;
+            total += result.total;
+        })
+        .done(function() {
+            notification.success = success;
+            notification.failure = failure;
+            notification.total = total;
+            notification.save();
+        });
+    }
+
     function send(body) {
-        var self = this,
-            success = 0,
-            failure = 0,
-            total = 0;
+        var self = this;
 
         return new Promise(function(resolve, reject) {
             if (!sendValidation(body)) {
@@ -101,36 +129,18 @@ module.exports = function(Notification) {
                 text: body.message.text,
                 deepLink: body.message.deepLink || null,
                 status: 'sending',
-                total: 100
+                error: '',
+                total: 0,
+                success: 0,
+                failure: 0,
             })
             .then(function(notification) {
                 notification.status = 'success';
-                deviceTokensStream(notification.to, 'android')
-                .through(gcmClient.sendNotificationStream(body.message))
-                .errors(function(err, push) {
-                    console.log('Error: ', err);
-                    notification.status = 'failure';
-                    notification.error = err.message;
-                    notification.save();
-                    push(err);
-                })
-                .each(function(result) {
-                    console.log('Each result: ', result);
-                    if (result instanceof Error) {
-                        notification.status = 'failure';
-                        notification.error = util.format('status code: %s, message: %s', result.code, result.message);
-                    }
-                    success += result.success;
-                    failure += result.failure;
-                    total += result.total;
-                })
-                .done(function() {
-                    console.log('Finish!!!');
-                    notification.success = success;
-                    notification.failure = failure;
-                    notification.total = total;
-                    notification.save();
-                });
+
+                var stream = deviceTokensStream(notification.to, 'android')
+                .through(gcmClient.sendNotificationStream(body.message));
+                sendNotificationStreamhandler(stream, notification);
+
                 resolve();
             })
             .catch(function(err) {
