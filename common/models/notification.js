@@ -6,6 +6,7 @@ module.exports = function(Notification) {
     var app         = require('../../server/server');
     var gcmClient   = require('../../lib/gcmClient')(app.get('notifications').gcm);
     var util        = require('util');
+    var datasource  = app.dataSources.mysql;
 
     Promise.config({warnings: false});
 
@@ -51,22 +52,49 @@ module.exports = function(Notification) {
         return true;
     }
 
+    function findTokens(to, type, limit, skip) {
+        if (to.all) {
+            return app.models.DeviceToken.find({
+                    fields: { token: true },
+                    limit: limit,
+                    skip: skip,
+                    where: {
+                        type: type
+                    }
+                })
+                .then(function(tokens) {
+                    return tokens.map(function(value) {
+                        return value.token;
+                    });
+                });
+        } else {
+            return new Promise(function(resolve, reject) {
+                var params = [];
+                params.push(to.subscribers);
+                params.push(type);
+                params.push(skip);
+                params.push(limit);
+
+                var sql = 'SELECT token FROM DeviceToken dt JOIN Subscription sb ON ' +
+                            'sb.volunteerId=dt.volunteerId AND sb.projectId=? WHERE type=? LIMIT ?,?';
+
+                datasource.connector.execute(sql, params, function(err, tokens) {
+                    if (err) return reject(err);
+                    tokens = tokens.map(function(value) {
+                        return value.token;
+                    });
+                    resolve(tokens);
+                });
+            });
+        }
+    }
+
     function deviceTokensStream(to, type) {
         var limit = 500;
         var skip = 0;
         return _(function(push, next) {
-            app.models.DeviceToken.find({
-                fields: { token: true },
-                limit: limit,
-                skip: skip,
-                where: {
-                    type: type
-                }
-            })
+            findTokens(to, type, limit, skip)
             .then(function(tokens) {
-                tokens = tokens.map(function(value) {
-                    return value.token;
-                });
                 if (tokens.length === 0) {
                     push(null, _.nil);
                 }
@@ -83,9 +111,9 @@ module.exports = function(Notification) {
     }
 
     function sendNotificationStreamhandler(stream, notification) {
-        var success = notification.success || 0,
-            failure = notification.failure || 0,
-            total = notification.total || 0;
+        var success = notification.success,
+            failure = notification.failure,
+            total = notification.total;
 
         stream
         .errors(function(err, push) {
@@ -96,7 +124,6 @@ module.exports = function(Notification) {
             push(err);
         })
         .each(function(result) {
-            console.log(result);
             if (result instanceof Error) {
                 notification.status = 'failure';
                 notification.error += util.format('status code: %s, message: %s || ', result.code, result.message);
