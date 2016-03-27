@@ -1,5 +1,5 @@
 {
-  "name": "dtl-api",
+  "name": "Desde tu lugar",
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
