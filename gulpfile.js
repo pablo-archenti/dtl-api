@@ -8,5 +8,5 @@ gulp.task(
 
 gulp.task(
     'ng-client-admin',
-    shell.task(['./node_modules/loopback-sdk-angular-cli/bin/lb-ng -m dtlClient server/server.js client/app/scripts/lib/dtl.client.js'], {verbose: true})
+    shell.task(['./node_modules/loopback-sdk-angular-cli/bin/lb-ng -m dtlClient server/server.js client/www/app/lib/dtl.client.js'], {verbose: true})
 );
