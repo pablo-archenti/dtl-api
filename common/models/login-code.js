@@ -6,8 +6,8 @@ module.exports = function(LoginCode) {
     LoginCode.observe('before save', function defaultCode(ctx, next) {
         var loginCode = ctx.instance;
 
-        if (!loginCode.validateCode(loginCode.code)) {
-            ctx.instance.setAttribute('code', randomNumbers.get(1000, 9999));
+        if (!loginCode.validCode(loginCode.code)) {
+            ctx.instance.setAttribute('code', app.get('dummyLoginCode') || randomNumbers.get(1000, 9999));
         }
         ctx.instance.setAttribute('ttl', app.get('loginCodeTTL'));
         ctx.instance.setAttribute('createdAt', Date.now());
@@ -17,7 +17,7 @@ module.exports = function(LoginCode) {
         next();
     });
 
-    LoginCode.prototype.validateCode = function(code) {
+    LoginCode.prototype.validCode = function(code) {
         var self = this;
         var expiredDate = new Date(this.createdAt);
         expiredDate = expiredDate.setSeconds(expiredDate.getSeconds() + this.ttl);

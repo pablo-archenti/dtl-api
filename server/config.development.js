@@ -1,3 +1,4 @@
 module.exports = {
-    enableEmails: false
+    enableEmails: false,
+    dummyLoginCode: 1111
 };

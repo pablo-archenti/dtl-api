@@ -179,7 +179,7 @@ module.exports = function(Volunteer) {
             .then(function(volunteer) {
                 if (!volunteer || !volunteer.loginCode()) throw defaultError;
 
-                if (volunteer.loginCode().validateCode(credentials.code)) {
+                if (volunteer.loginCode().validCode(credentials.code)) {
                     volunteer.createAccessToken(app.get('volunteerSessionTTL'))
                     .then(function(token) {
                         token.__data.user = volunteer;

@@ -5,6 +5,7 @@
     "volunteerSessionTTL": 31536000,
     "loginCodeTTL": 43200,
     "enableEmails": true,
+    "dummyLoginCode": false,
     "dtlWebserver": {
         "baseUrl": "http://desdetulugar.com.ar",
         "projectsPicsMainEndpoint": "http://desdetulugar.com.ar/panel/proyectos/principal",
