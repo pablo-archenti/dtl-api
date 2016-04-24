@@ -17,4 +17,4 @@
 coverage
 node_modules
 npm-debug.log
-client/app/bower_components/
+client/www/bower_components
