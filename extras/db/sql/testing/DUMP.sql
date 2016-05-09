@@ -20,7 +20,10 @@ SET time_zone = "+00:00";
 -- Dumping data for table `personas`
 --
 /*!40000 ALTER TABLE `personas` DISABLE KEYS */;
-INSERT INTO `personas` VALUES (411,'','Sol Lisdero','5/11/1979','1559940471','sol.lisdero@gmail.com','','compra_chica, tiempo, auto, voluntario_eventos','artista, otro, astrologa','Soy editora de fotografia free lance, trabajo para el grupo de revistas de La Nacion. \r\nMas adelante, me gustaria tener algun proyecto a cargo pero por el momento estoy embarazada y prefiero sumarme a cosas que ya esten funcionando.','no','si','','2015-02-03',NULL),(592,'','michael lapidoth','2/9/1968','01149719324','mikelapidoth@hotmail.com','maschwitz','tiempo, camioneta, otro, camioneta cerrada (duster)','otro, ventas envases','tengo acceso a las industrias que visito por venta de envases y envasadoras, algunas alimenticias grandes . ambiente de rugby veteranos.\r\nme llaman para darme donaciones de electrodomesticos, ropa y alimentos que envio a santa fe norte, el arco (benavidez) y dique lujan (comedor)\r\ntambien estoy como voluntario en alegraÃ±atas\r\npuedo sumarme o aportar a proyectos, pero no hacerme cargo, ya tengo algunos propios ya . En su momento me ofrecieron bicis si necesitan de nuevo. ','no','si','si','2015-04-15',NULL),(600,'','Pablo Archenti','02/08/1979','47918685','pabloarchenti@gmail.com','Florida','tiempo, camioneta, otro','otro','Todo bien','no','si','si','2015-04-15',NULL);
+INSERT INTO `personas` VALUES (1,'','Pablo Perez','5/11/1979','1559940471','pablo.perez@desdetulugar.com.ar',
+'Florida','tiempo, camioneta, otro','Contador','','no','si','','2016-01-01','2016-05-08 20:51:37'),
+(2,'','Federico Gomez','5/11/1979','1559940471','federico.gomez@desdetulugar.com.ar',
+'Florida','tiempo, camioneta, otro','Contador','','no','si','','2016-01-01','2016-05-08 20:51:37');
 /*!40000 ALTER TABLE `personas` ENABLE KEYS */;
 
 
