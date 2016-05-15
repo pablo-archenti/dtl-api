@@ -44,4 +44,4 @@ INSERT INTO `fotos` VALUES (1,28,'17_58_11fuerteapacheycava1.jpeg','0000-00-00',
 --
 -- Dumping data for table `Suscription`
 --
-INSERT INTO `Subscription` (`volunteerId`,`projectId`) VALUES (600,75),(600,76);
+INSERT INTO `Subscription` (`volunteerId`,`projectId`) VALUES (1,101),(1,75);
