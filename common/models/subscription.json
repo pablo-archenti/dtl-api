@@ -1,6 +1,12 @@
 {
     "name": "Subscription",
     "base": "PersistedModel",
+    "options": {
+        "validateUpsert": true,
+        "mysql": {
+          "table": "suscripciones"
+        }
+    },
     "properties": {
         "help": {
             "type": "String",
