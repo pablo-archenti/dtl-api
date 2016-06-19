@@ -12,7 +12,6 @@
         "token": {
             "type": "string",
             "length": 512,
-            "index": {"unique": true},
             "id": "true"
         },
         "type": {
