@@ -70,7 +70,7 @@ module.exports = function(Notification) {
                 params.push(skip);
                 params.push(limit);
 
-                var sql = 'SELECT token FROM DeviceToken dt JOIN Subscription sb ON ' +
+                var sql = 'SELECT token FROM tokens_dispositivos dt JOIN suscripciones sb ON ' +
                             'sb.volunteerId=dt.volunteerId AND sb.projectId=? WHERE type=? LIMIT ?,?';
 
                 datasource.connector.execute(sql, params, function(err, tokens) {
