@@ -20,8 +20,10 @@
     },
     "validations": [],
     "indexes": {
-        "volunteer_index": { "columns": "projectId" },
-        "project_index": { "columns": "volunteerId" }
+        "volunteer_project_index": {
+            "columns": "volunteerId, projectId",
+            "kind": "unique"
+        }
     },
     "relations": {
         "project": {
