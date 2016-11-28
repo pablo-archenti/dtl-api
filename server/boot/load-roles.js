@@ -7,8 +7,8 @@ module.exports = function(app, cb) {
     Admin.create([{
         name: 'Pablo Archenti',
         username: 'pabloarchenti',
-        email: 'pabloarchenti@gmail.com',
-        password: 'cache123'
+        email: 'parchenti@gmail.com',
+        password: 'admin'
     }])
     .then(function(users) {
         return Role.create({ name: 'admin' })
