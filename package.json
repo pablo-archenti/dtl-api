@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node .",
     "start-dev": "DEBUG=loopback:connector:mysql,express:router,strong-remoting:shared-method supervisor --extensions '.' --watch '.' .",
+    "db-testing": "npm run db-testing-create && npm run db-testing-data",
     "db-testing-create": "NODE_ENV=testing ./extras/db/scripts/db-testing-create.sh",
     "db-development-create": "NODE_ENV=development ./extras/db/scripts/db-development-create.sh",
     "db-development-data": "NODE_ENV=development ./extras/db/scripts/db-development-data.sh",
