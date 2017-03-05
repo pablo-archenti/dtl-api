@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "start": "node .",
+    "start": "DEBUG=loopback:component:push:provider:gcm node .",
     "start-dev": "DEBUG=loopback:connector:mysql,express:router,strong-remoting:shared-method supervisor --extensions '.' --watch '.' .",
     "db-testing": "npm run db-testing-create && npm run db-testing-data",
     "db-testing-create": "NODE_ENV=testing ./extras/db/scripts/db-testing-create.sh",
