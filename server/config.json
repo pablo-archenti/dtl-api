@@ -14,7 +14,7 @@
     "notifications": {
         "gcm": {
             "baseUrl": "https://gcm-http.googleapis.com/gcm/send",
-            "key": "AIzaSyCcLs08SeBMF7QwTZWuNtoVbmlPFlqKAHE",
+            "key": "AIzaSyAOUK4KLBv-zfV4Z8DZ5mJyo93k3fhVOcU",
             "maxDevicesPerRequest": 1000
         }
     },
