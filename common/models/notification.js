@@ -22,15 +22,15 @@ module.exports = function(Notification) {
                 http: { source: 'body' },
                 'default': {
                     to: {
-                        all: false,
-                        subscribersOf: 100
+                        all: true,
+                        subscribersOf: 135
                     },
                     message: {
-                        title: 'title text',
-                        text: 'Main text',
+                        title: 'Proyecto cumplido!',
+                        text: 'Los chicos pudieron divertirse viendo la obra Sr. Imaginación!!',
                         deepLink: {
                             state: 'app.projects.show',
-                            params: { id: 100 }
+                            params: { id: 135 }
                         }
                     }
                 }
